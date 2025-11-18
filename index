@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claire Montiel | Portfolio</title>
+  <style>
+    /* ===== General Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== Header / Hero ===== */
+    header {
+      background: linear-gradient(to right, #0b1d51, #112a66);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #f4c542;
+      margin-bottom: 20px;
+      transition: transform 0.5s;
+    }
+
+    header img:hover {
+      transform: scale(1.1);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #f4c542;
+      margin-bottom: 30px;
+    }
+
+    header a {
+      background-color: #f4c542;
+      color: #0b1d51;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    header a:hover {
+      background-color: #e0b42d;
+      transform: translateY(-3px);
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #0b1d51;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 20px;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f4c542;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0b1d51;
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+    }
+
+    /* ===== About Section ===== */
+    .about p {
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeUp 1s forwards;
+      animation-delay: 0.3s;
+    }
+
+    /* ===== Portfolio Section ===== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.5s, box-shadow 0.5s;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeUp 0.6s forwards;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.2s; }
+    .project-card:nth-child(2) { animation-delay: 0.4s; }
+    .project-card:nth-child(3) { animation-delay: 0.6s; }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-card h3 {
+      margin: 15px;
+      color: #0b1d51;
+    }
+
+    .project-card p {
+      margin: 0 15px 15px 15px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ===== Contact Section ===== */
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input, 
+    .contact textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .contact button {
+      padding: 14px;
+      background-color: #0b1d51;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact button:hover {
+      background-color: #112a66;
+      transform: translateY(-2px);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #0b1d51;
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width: 600px){
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header>
+    <img src="https://via.placeholder.com/150" alt="Claire Montiel">
+    <h1>Claire Montiel</h1>
+    <p>Human Resources Specialist | Recruitment Expert</p>
+    <a href="#contact">Hire Me</a>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>Hello! I am Claire Montiel, a professional Human Resources Specialist with 6 years of experience in recruitment, talent management, and administrative support. I enjoy helping companies find the right talent and optimizing HR processes for efficiency and growth.</p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>My Work</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Recruitment Project">
+        <h3>Recruitment Project</h3>
+        <p>Implemented a streamlined recruitment system for managerial and household staff, reducing hiring time by 30%.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="HR Automation">
+        <h3>HR Automation</h3>
+        <p>Developed an HR onboarding and evaluation process to improve efficiency and employee satisfaction.</p>
+      </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Training & Development">
+        <h3>Training & Development</h3>
+        <p>Organized employee workshops and training programs for both FOH and BOH teams to enhance skills.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Claire Montiel. All rights reserved.</p>
+  </footer>
+</body>
+</html>
